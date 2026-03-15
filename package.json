@@ -1,0 +1,21 @@
+{
+  "name": "lewis-desktop",
+  "productName": "Lewis",
+  "version": "1.0.0",
+  "description": "Lewis Agent Portal - Desktop Chat",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.0.0",
+    "@electron-forge/maker-dmg": "^7.0.0",
+    "@electron-forge/maker-zip": "^7.0.0",
+    "electron": "^29.0.0"
+  }
+}
