@@ -147,11 +147,26 @@ function createTrayIcon() {
 // ---------------------------------------------------------------------------
 // Allowed navigation origins
 // ---------------------------------------------------------------------------
-const ALLOWED_HOSTS = ['talos.mtree.io', 'mtree.io', 'localhost', '127.0.0.1', 'accounts.google.com', 'accounts.youtube.com'];
+const ALLOWED_HOSTS = [
+  'talos.mtree.io', 'mtree.io', 'localhost', '127.0.0.1',
+  // Google OAuth flow — all must stay in-app for session cookies to work
+  'accounts.google.com', 'accounts.youtube.com',
+  'consent.google.com', 'myaccount.google.com',
+  'www.google.com', 'google.com',
+  'content.googleapis.com', 'ssl.gstatic.com',
+  'fonts.googleapis.com', 'apis.google.com',
+  'lh3.googleusercontent.com',
+];
 
 function isAllowedURL(urlString) {
   try {
     const { hostname } = new URL(urlString);
+    // Allow any *.google.com / *.gstatic.com / *.googleapis.com for OAuth flow
+    if (hostname.endsWith('.google.com') || hostname === 'google.com' ||
+        hostname.endsWith('.gstatic.com') || hostname.endsWith('.googleapis.com') ||
+        hostname.endsWith('.googleusercontent.com')) {
+      return true;
+    }
     return ALLOWED_HOSTS.some(h => hostname === h || hostname.endsWith('.' + h));
   } catch {
     return false;
