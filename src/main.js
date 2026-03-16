@@ -77,31 +77,49 @@ function pngChunk(type, data) {
 function createTemplatePNG(size) {
   const { deflateSync } = require('zlib');
 
-  // Draw a simple 'L' glyph in black on transparent background (RGBA)
+  // Draw a simple 'A' glyph in black on transparent background (RGBA)
   const pixels = Buffer.alloc(size * size * 4, 0); // all transparent
   const margin = Math.floor(size * 0.2);
   const strokeW = Math.max(2, Math.floor(size * 0.15));
   const bottom = size - margin;
   const right = size - margin;
 
-  // Vertical bar of 'L'
+  // Left leg of 'A'
   for (let y = margin; y < bottom; y++) {
-    for (let x = margin; x < margin + strokeW; x++) {
-      const idx = (y * size + x) * 4;
-      pixels[idx] = 0;       // R
-      pixels[idx + 1] = 0;   // G
-      pixels[idx + 2] = 0;   // B
-      pixels[idx + 3] = 255; // A
+    const progress = (y - margin) / (bottom - margin);
+    const xCenter = margin + (right - margin) / 2;
+    const xLeft = Math.floor(xCenter - progress * (xCenter - margin));
+    for (let x = xLeft; x < xLeft + strokeW; x++) {
+      if (x >= 0 && x < size) {
+        const idx = (y * size + x) * 4;
+        pixels[idx] = 0; pixels[idx+1] = 0; pixels[idx+2] = 0; pixels[idx+3] = 255;
+      }
     }
   }
-  // Horizontal bar of 'L'
-  for (let y = bottom - strokeW; y < bottom; y++) {
-    for (let x = margin; x < right; x++) {
-      const idx = (y * size + x) * 4;
-      pixels[idx] = 0;
-      pixels[idx + 1] = 0;
-      pixels[idx + 2] = 0;
-      pixels[idx + 3] = 255;
+  // Right leg of 'A'
+  for (let y = margin; y < bottom; y++) {
+    const progress = (y - margin) / (bottom - margin);
+    const xCenter = margin + (right - margin) / 2;
+    const xRight = Math.floor(xCenter + progress * (right - xCenter));
+    for (let x = xRight; x < xRight + strokeW; x++) {
+      if (x >= 0 && x < size) {
+        const idx = (y * size + x) * 4;
+        pixels[idx] = 0; pixels[idx+1] = 0; pixels[idx+2] = 0; pixels[idx+3] = 255;
+      }
+    }
+  }
+  // Crossbar of 'A'
+  const crossY = Math.floor(margin + (bottom - margin) * 0.55);
+  for (let y = crossY; y < crossY + strokeW; y++) {
+    const progress = (y - margin) / (bottom - margin);
+    const xCenter = margin + (right - margin) / 2;
+    const xLeft = Math.floor(xCenter - progress * (xCenter - margin));
+    const xRight = Math.floor(xCenter + progress * (right - xCenter)) + strokeW;
+    for (let x = xLeft; x < xRight; x++) {
+      if (x >= 0 && x < size) {
+        const idx = (y * size + x) * 4;
+        pixels[idx] = 0; pixels[idx+1] = 0; pixels[idx+2] = 0; pixels[idx+3] = 255;
+      }
     }
   }
 

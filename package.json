@@ -1,7 +1,7 @@
 {
   "name": "agent-portal-desktop",
   "productName": "Agent Portal",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Agent Portal - Desktop Chat for Maple Tree AI agents",
   "main": "src/main.js",
   "scripts": {
