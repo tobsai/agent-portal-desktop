@@ -147,7 +147,7 @@ function createTrayIcon() {
 // ---------------------------------------------------------------------------
 // Allowed navigation origins
 // ---------------------------------------------------------------------------
-const ALLOWED_HOSTS = ['talos.mtree.io', 'mtree.io', 'localhost', '127.0.0.1'];
+const ALLOWED_HOSTS = ['talos.mtree.io', 'mtree.io', 'localhost', '127.0.0.1', 'accounts.google.com', 'accounts.youtube.com'];
 
 function isAllowedURL(urlString) {
   try {
@@ -222,7 +222,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadURL('https://talos.mtree.io/c', {
+  mainWindow.loadURL('https://talos.mtree.io', {
     userAgent: 'Lewis-Desktop/1.0 Electron',
   });
 

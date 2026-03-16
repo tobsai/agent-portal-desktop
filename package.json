@@ -1,7 +1,7 @@
 {
   "name": "lewis-desktop",
   "productName": "Lewis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lewis Agent Portal - Desktop Chat",
   "main": "src/main.js",
   "scripts": {
