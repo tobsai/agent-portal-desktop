@@ -1,8 +1,8 @@
 module.exports = {
   packagerConfig: {
-    name: 'Lewis',
-    executableName: 'Lewis',
-    appBundleId: 'io.mtree.lewis-desktop',
+    name: 'Agent Portal',
+    executableName: 'AgentPortal',
+    appBundleId: 'io.mtree.agent-portal',
     icon: 'src/icon',
     osxSign: false,
     osxNotarize: false,

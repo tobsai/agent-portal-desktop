@@ -1,8 +1,8 @@
 {
-  "name": "lewis-desktop",
-  "productName": "Lewis",
-  "version": "1.0.2",
-  "description": "Lewis Agent Portal - Desktop Chat",
+  "name": "agent-portal-desktop",
+  "productName": "Agent Portal",
+  "version": "1.0.3",
+  "description": "Agent Portal - Desktop Chat for Maple Tree AI agents",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",

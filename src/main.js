@@ -179,7 +179,7 @@ function isAllowedURL(urlString) {
 function buildMenu(win) {
   const template = [
     {
-      label: 'Lewis',
+      label: 'Agent Portal',
       submenu: [
         { role: 'about' },
         { type: 'separator' },
@@ -238,7 +238,7 @@ function createWindow() {
   });
 
   mainWindow.loadURL('https://talos.mtree.io', {
-    userAgent: 'Lewis-Desktop/1.0 Electron',
+    userAgent: 'AgentPortal-Desktop/1.0 Electron',
   });
 
   // Block or open external navigation
@@ -271,10 +271,10 @@ function createWindow() {
 
 function createTray() {
   tray = new Tray(createTrayIcon());
-  tray.setToolTip('Lewis');
+  tray.setToolTip('Agent Portal');
 
   const contextMenu = Menu.buildFromTemplate([
-    { label: 'Show Lewis', click: showWindow },
+    { label: 'Show Agent Portal', click: showWindow },
     { type: 'separator' },
     { label: 'Quit', click: () => app.quit() },
   ]);
